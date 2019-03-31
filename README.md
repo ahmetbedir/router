@@ -1,4 +1,4 @@
-# PHP Rota Sistemi
+# Router - PHP Rota Sistemi
 
 MVC yapınız içerisinde kullanbileceğiniz basit rota sistemi. Yazım kolaylığı ve sadelikten dolayı Laravel'in rota yapısına benzer bir kullanım sunar.
 
