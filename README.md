@@ -11,7 +11,7 @@ Rota yapınız içerisinde **{id}** gibi URL'den gelen isteklerdeki parametreler
 # Kullanılabilir Methodlar
 ### **GET, POST, PUT, PATCH, DELETE**
 **PUT, PATHC, DELETE** methodlarını kullanabilmeniz için HTML 
-Form etiketinin içinde adı **_method** olan ve değeri methodunuz bir input kullanmanız gerekmektedir.
+Form etiketinin içinde adı **_method** ve değeri methodunuz olan bir input kullanmanız gerekmektedir.
 ## Örnek Kullanım
 ```html
 <form action="/user" method="POST">
