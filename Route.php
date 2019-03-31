@@ -13,6 +13,7 @@ class Route {
 	private static $matchedRoute		= array();
 	private static $matchedRouteParams 	= array();
 	private static $routeFound 			= false;
+	private static $fallback			= false;
 
 	private static $currentRoute		= array();
 	private static $currentRouteAction	= array();
@@ -92,8 +93,6 @@ class Route {
 	 * @return void
 	 */
 	private static function addRoute($method, $route, $action){
-		self::$routeFound = !self::$routeFound ?? true;
-
 		$method = array_map('strtoupper', $method);
 		
 		array_push(self::$methods, $method);
@@ -108,6 +107,8 @@ class Route {
 	 * @return void
 	 */
 	private static function startRoute($routeIndex){
+		self::$routeFound = !self::$routeFound ?? true;
+
 		self::$matchedRouteParams = array_slice(array_unique(self::$matchedRoute), 1);
 		
 		self::$currentRoute = self::$matchedRoute[0];
@@ -157,8 +158,13 @@ class Route {
 	 *
 	 * @return void
 	 */
-	private static function fallback(){
-		throw new \Exception('Sayfa bulunamadı!');
+	public static function fallback($closure = false){
+		if(is_callable($closure)){
+			self::$fallback = true;
+			call_user_func($closure);
+		}else{
+			throw new \Exception('Sayfa bulunamadı!');
+		}
 	}
 
 	/**
@@ -208,10 +214,9 @@ class Route {
 			// İstek methodu ile rota methodunu kontrol et
 			if(self::checkMethod($routeIndex))
 				self::startRoute($routeIndex);
-			
 		}
 
-		if(!self::$routeFound)
+		if(!self::$routeFound && !self::$fallback)
 			self::fallback();
 	}
 }
