@@ -10,8 +10,7 @@ Rota yapınız içerisinde **{id}** gibi URL'den gelen isteklerdeki parametreler
 
 # Kullanılabilir Methodlar
 ### **GET, POST, PUT, PATCH, DELETE**
-**PUT, PATHC, DELETE** methodlarını kullanabilmeniz için HTML 
-Form etiketinin içinde adı **_method** ve değeri methodunuz olan bir input kullanmanız gerekmektedir.
+**PUT, PATHC, DELETE** methodlarını kullanabilmeniz için HTML Form etiketinin içinde adı **_method** ve değeri methodunuz olan bir input kullanmanız gerekmektedir.
 ## Örnek Kullanım
 ```html
 <form action="/user" method="POST">
@@ -32,14 +31,14 @@ Route::post('/kullanici/{id}/duzenle', function($id){
 ### Aynı rota birden fazla istek methoduyla çalışabilir. Buarada **match** methoduna dizi olarak girdiğiniz istek methodları işlem sırasında izin verilir aksi takdirde rota eşleşmez.
 ```php
 Route::match(['get', 'post'], '/kullanici', function(){
-    echo "";
+    echo "GET ve POST durumlarında çalışır";
 });
 ```
 
 ### Tüm istek methodlarında çalışan bir rota için **any** sınıf methodunu kullanabiliriz.
 ```php
 Route::any('/makale', function(){
-    echo "İstek Methodu: " . $_SERVER['REQUEST_METHOD'];
+    echo "İstek yapılan tüm methodlarda çalışır.";
 });
 ```
 
