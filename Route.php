@@ -182,7 +182,7 @@ class Route {
 	 * @return array|boolean
 	 */
 	private static function routeMatch($route){
-		$requestURI = trim($_GET['route'], '/');
+		$requestURI = trim($_GET['url'], '/');
 		$routePattern = preg_replace("/\{(.*?)\}/", "(?'$1'[\w-]+)", $route);
 		
 		$routePattern = "#^" . trim($routePattern, '/') . "$#";
