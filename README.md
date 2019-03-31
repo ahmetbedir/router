@@ -8,7 +8,7 @@ Rota yapınız içerisinde **{id}** gibi URL'den gelen isteklerdeki parametreler
 /user/{id}/edit 
 ```
 
-# Kullanılabilir methodlar
+# Kullanılabilir Methodlar
 ### **GET, POST, PUT, PATCH, DELETE**
 **PUT, PATHC, DELETE** methodlarını kullanabilmeniz için HTML 
 Form etiketinin içinde adı **_method** olan ve değeri methodunuz bir input kullanmanız gerekmektedir.
@@ -43,7 +43,7 @@ Route::any('/makale', function(){
 });
 ```
 
-# Methodlar
+---
 | Method | Kullanım                       | 
 | ------ | ------------------------------ |
 | GET    | Route::get($route, $action)    |
